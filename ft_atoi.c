@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:01:24 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 12:45:43 by fserpe           ###   ########.fr       */
+/*   Created: 2022/11/09 16:47:43 by fserpe            #+#    #+#             */
+/*   Updated: 2022/11/09 16:58:04 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	char	*arr;
+	int	i;
+	int	sign;
+	int	nb;
 
-	arr = (char *)s;
-	while (n-- > 0)
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+		++i;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		*arr++ = '\0';
+		if (nptr[i] == '-')
+			sign *= -1;
+		++i;
 	}
-	return (s);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb *= 10;
+		nb = nb + nptr[i] - 48;
+		++i;
+	}
+	return (sign * nb);
 }

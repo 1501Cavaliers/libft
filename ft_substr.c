@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:01:24 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 12:45:43 by fserpe           ###   ########.fr       */
+/*   Created: 2022/11/10 14:05:14 by fserpe            #+#    #+#             */
+/*   Updated: 2022/11/10 14:05:36 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_bzero(void *s, size_t n)
-{
-	char	*arr;
-
-	arr = (char *)s;
-	while (n-- > 0)
-	{
-		*arr++ = '\0';
-	}
-	return (s);
-}
+char	*ft_substr(char const *s, unsigned int start, size_t len)

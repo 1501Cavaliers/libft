@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:01:24 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 12:45:43 by fserpe           ###   ########.fr       */
+/*   Created: 2022/11/09 15:20:49 by fserpe            #+#    #+#             */
+/*   Updated: 2022/11/09 17:26:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*arr;
+	size_t	b;
+	size_t	l;
 
-	arr = (char *)s;
-	while (n-- > 0)
+	b = 0;
+	l = 0;
+	if (!little)
+		return ((char *)big);
+	if (!big)
+		return (0);
+	while (big[b] && b + l < len - 1)
 	{
-		*arr++ = '\0';
+		l = 0;
+		while (big[b + l] == little[l] && b + l < len - 1)
+		{
+			++l;
+			if (l == ft_strlen(little))
+				return ((char *)&big[b]);
+		}
+		++b;
 	}
-	return (s);
+	return (0);
 }

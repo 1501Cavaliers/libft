@@ -6,11 +6,13 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:45:37 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/08 13:06:15 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/09 12:55:32 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, int n)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*arr;
 
