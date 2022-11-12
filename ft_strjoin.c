@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 17:00:35 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/10 15:31:59 by fserpe           ###   ########.fr       */
+/*   Created: 2022/11/10 17:23:04 by fserpe            #+#    #+#             */
+/*   Updated: 2022/11/10 17:56:57 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	i;
+	int		i;
+	int		y;
 
-	i = 0;
-	if (!size || !nmemb)
-		return (0);
-	if (size * nmemb > 4294967295)
-		return (0);
-	str = malloc(size * nmemb);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (0);
-	while (i < nmemb)
+	i = 0;
+	while (s1[i])
 	{
-		str[i] = 0;
+		str[i] = s1[i];
 		++i;
 	}
-	return ((void *) str);
+	y = 0;
+	while (s2[y])
+	{
+		str[i + y] = s2[y];
+		++y;
+	}
+	str[i + y] = 0;
+	return (str);
 }

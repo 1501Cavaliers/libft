@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:47:43 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 16:58:04 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/10 14:17:53 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nb *= 10;
-		nb = nb + nptr[i] - 48;
+		nb += nptr[i] - 48;
 		++i;
 	}
 	return (sign * nb);

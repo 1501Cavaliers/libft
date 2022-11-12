@@ -1,5 +1,6 @@
-NAME = libft.exe
-CC = gcc -Wall -Werror -Wextra -g3 -fsanitize=address
+NAME = libft.a
+CC = gcc -Wall -Werror -Wextra
+EXE = libft.exe
 MY_SOURCES = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -23,16 +24,32 @@ MY_SOURCES = ft_isalpha.c \
 	ft_atoi.c \
 	ft_calloc.c \
 	ft_strdup.c \
+	ft_substr.c \
+	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_striteri.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
 	main.c
 MY_OBJETCS = $(MY_SOURCES:.c=.o)
+$(MY_OBJETCS): $(MY_SOURCES)
+	$(CC) -c $(MY_SOURCES)
 $(NAME): $(MY_OBJETCS)
-	$(CC) -o $(NAME) $(MY_OBJETCS)
-	ar -cr libft.a $(MY_OBJETCS)
-	ar -d libft.a main.o
+	ar -cr $(NAME) $(MY_OBJETCS)
+	ar -d $(NAME) main.o
+$(EXE): $(NAME)
+	$(CC) -o $(EXE) $(NAME) main.o
 NAME: $(NAME)
 clean:	
 	rm -f *.o
 fclean: clean
 	rm -f $(NAME) libft.a
 re: NAME clean
-all: NAME clean fclean re
+mem:
+	valgrind --leak-check=yes ./libft.exe
+all: NAME clean fclean re mem
