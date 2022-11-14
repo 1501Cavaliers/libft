@@ -6,12 +6,11 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:00:17 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/11 16:05:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:39:06 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 int	fill_splinter(char *str, const char *s, char c, int i)
 {
@@ -69,16 +68,16 @@ int	word_count(const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int	word;
-	char **splinter;
-	int	r;
-	int	i;
+	int		word;
+	char	**splinter;
+	int		r;
+	int		i;
 
 	i = 0;
 	if (*s == 0)
 		return (0);
 	word = word_count(s, c);
-	splinter = malloc(sizeof(char *)* (word + 1));
+	splinter = malloc(sizeof(char *) * (word + 1));
 	if (!splinter)
 		return (0);
 	r = 0;

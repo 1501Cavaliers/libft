@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 14:45:18 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/12 15:39:21 by fserpe           ###   ########.fr       */
+/*   Created: 2022/11/13 17:01:14 by fserpe            #+#    #+#             */
+/*   Updated: 2022/11/13 17:02:37 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+t_list *ft_lstlast(t_list *lst)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < (unsigned int)ft_strlen(s))
-	{
-		f(i, s);
-		++i;
-	}
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

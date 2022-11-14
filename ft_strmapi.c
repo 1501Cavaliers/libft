@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:15:39 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/11 18:33:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:37:50 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*arr;
-	int	i;
-	int len;
+	int		i;
+	int		len;
 
 	len = ft_strlen(s);
 	arr = malloc(sizeof(char) * (len + 1));

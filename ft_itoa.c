@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:10:26 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/11 18:15:27 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:38:31 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_rev_char_tab(char *arr, int size)
 {
-	int	i;
-	char temp;
+	int		i;
+	char	temp;
 
 	i = 0;
 	while (i < (size / 2))
@@ -54,7 +54,7 @@ void	ft_fill_arr(char *arr, int n, int len, int s)
 int	ft_len(int n)
 {
 	int	x;
-	int len;
+	int	len;
 
 	x = n;
 	len = 0;
