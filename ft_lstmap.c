@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:23:30 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/14 18:47:42 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:09:30 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,17 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*start;
-	t_list	*temp1;
-	t_list	*temp2;
+	t_list	*new;
 
-	if (!lst)
+	if (!lst || !f || !del)
 		return (NULL);
-	start = malloc(sizeof(t_list));
-	start->content = f(lst->content);
-	temp1 = start;
-	del(lst->content);
+	start = ft_lstnew(f(lst->content));
 	lst = lst->next;
-	
+	while (lst)
+	{
+		new = ft_lstnew(f(lst->content));
+		ft_lstadd_back(&start, new);
+		lst = lst->next;
+	}
+	return (start);
 }
-
-
-t_list start
-start.cont = f(lst.cont)
-tmp1 = start
-tmp2
-lst.cont destroy
-lst = lst.next
-free(lst.prev)
-while(tmp1)
-tmp2.cont = f(lst.cont)
-tmp1.next = temp2 
-lst.cont destroy
-lst = lst.next
-free(lst.prev)

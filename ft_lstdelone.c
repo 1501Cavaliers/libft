@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:02:32 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/14 15:13:52 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:02:20 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-		del(lst->content);
-		free(lst);
+	del(lst->content);
+	free(lst);
 }
