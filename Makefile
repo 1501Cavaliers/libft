@@ -1,6 +1,7 @@
 NAME = libft.a
+
 CC = gcc -Wall -Wextra -Wall
--fsanitize=address
+
 MY_SOURCES = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -33,7 +34,8 @@ MY_SOURCES = ft_isalpha.c \
 	ft_striteri.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
-	ft_lstnew.c \
+
+SOURCES_BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -42,29 +44,27 @@ MY_SOURCES = ft_isalpha.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
-	main.c
 
-SOURCES_BONUS = ft_lstnew.c \
-	ft_lstadd_front.c \
-	ft_lstsize.c \
-	ft_lstlast.c \
-	ft_lstadd_back.c 
+MY_OBJETCS = $(MY_SOURCES:.c=.o)
 
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
-MY_OBJETCS = $(MY_SOURCES:.c=.o)
+
 $(NAME): $(MY_OBJETCS)
-	$(CC) $(MY_OBJETCS)
-	ar -crs $(NAME) $(MY_OBJETCS)
-	ar -d $(NAME) main.o
+	$(CC) -c $(MY_OBJETCS)
+	ar -cr $(NAME) $(MY_OBJETCS)
+
 NAME: $(NAME)
+
 clean:	
 	rm -f *.o
+
 fclean: clean
 	rm -f $(NAME) a.out
+
 re: NAME clean
-mem:
-	valgrind --leak-check=yes ./libft.exe
-bonus: $(SOURCES_BONUS)
-	$(CC)-c $(OBJECTS_BONUS)
+
+bonus : $(SOURCES_BONUS)
+	$(CC) -c $(SOURCES_BONUS)
 	ar -r $(NAME) $(OBJECTS_BONUS)
+
 all: NAME clean fclean re mem

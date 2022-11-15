@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:00:35 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/10 15:31:59 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:34:29 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	i = 0;
 	if (!size || !nmemb)
-		return (0);
+		return (NULL);
 	if (size * nmemb > 4294967295)
-		return (0);
+		return (NULL);
 	str = malloc(size * nmemb);
 	if (!str)
-		return (0);
-	while (i < nmemb)
+		return (NULL);
+	while (str[i] && i < nmemb)
 	{
 		str[i] = 0;
 		++i;

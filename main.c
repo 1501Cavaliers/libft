@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:14:55 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/15 16:18:29 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/15 17:52:19 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	main(void)
 {
-	char	*s = "hemoglobine sur mes nike";
-	char	d[100];
+	char	s[] = "hemoglobine sur mes nike";
 
-	// ft_memmove(s + 2, s, 15);
-	printf("%s\n", (char *)ft_memmove(s, s + 2, 15));
+	memmove(s + 2, s, 10);
+	printf("%s\n", s);
 }
