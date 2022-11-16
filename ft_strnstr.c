@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:49 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 17:26:35 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/16 16:57:58 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	b;
 	size_t	l;
 
-	b = 0;
 	l = 0;
-	if (!little)
+	if (!little[l])
 		return ((char *)big);
-	if (!big)
+	if (!big || !len)
 		return (0);
-	while (big[b] && b + l < len - 1)
+	b = 0;
+	while (big[b] && b + l < len)
 	{
 		l = 0;
-		while (big[b + l] == little[l] && b + l < len - 1)
+		while (big[b + l] == little[l] && b + l < len)
 		{
 			++l;
 			if (l == ft_strlen(little))
@@ -36,3 +36,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
+
+// int	main(void)
+// {
+// 	char haystack[30] = "aaabcabcd";
+// 	// char needle[10] = "aabc";
+// 	// char * empty = (char*)"";
+
+// 	printf("%s\n", ft_strnstr(haystack, "aaabc", 5));
+// }

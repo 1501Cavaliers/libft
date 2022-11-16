@@ -6,29 +6,29 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:10:26 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/12 15:38:31 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/16 13:21:23 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_rev_char_tab(char *arr, int size)
+char	*ft_rev_char_tab(char *arr, int size)
 {
 	int		i;
 	char	temp;
 
 	i = 0;
-	while (i < (size / 2))
+	while (i < size / 2)
 	{
 		temp = arr[i];
 		arr[i] = arr[size - i - 1];
 		arr[size - i - 1] = temp;
 		++i;
 	}
-	printf("in tab: %s\n", arr);
+	return (arr);
 }
 
-void	ft_fill_arr(char *arr, int n, int len, int s)
+char	*ft_fill_arr(char *arr, int n, int len, int s)
 {
 	int	i;
 
@@ -49,21 +49,20 @@ void	ft_fill_arr(char *arr, int n, int len, int s)
 	}
 	arr[i] = 0;
 	ft_rev_char_tab(arr, len);
+	return (arr);
 }
 
 int	ft_len(int n)
 {
-	int	x;
-	int	len;
+	int	i;
 
-	x = n;
-	len = 0;
-	while (x > 0)
+	i = 1;
+	while (n > 10)
 	{
-		x /= 10;
-		++len;
-	}
-	return (len);
+		i++;
+		n = n / 10;
+	}	
+	return (i);
 }
 
 char	*ft_itoa(int n)
@@ -72,13 +71,17 @@ char	*ft_itoa(int n)
 	int		s;
 	int		len;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
 		s = 1;
 		n *= -1;
 	}
+	else
+		s = 0;
 	len = ft_len(n);
-	arr = malloc(sizeof(char) * (len + s));
+	arr = malloc(sizeof(char) * (len + s + 1));
 	if (!arr)
 		return (0);
 	ft_fill_arr(arr, n, len, s);

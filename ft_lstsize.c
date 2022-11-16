@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 16:51:29 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/13 18:31:44 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/16 13:31:59 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_lstsize(t_list *lst)
 	while (lst)
 	{
 		lst = lst->next;
-		++size;
+		size++;
 	}
 	return (size);
 }
