@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:39:48 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 17:37:17 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/16 18:03:28 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	count = 0;
 	while (check_if_set(s1[i], set))
 	{
-		printf("count in 1st loop : %ld\n", count);
-		printf("i in 1st loop : %ld\n", i);
 		++count;
 		++i;
 	}
 	i = ft_strlen(s1) - 1;
-	printf("count1 : %ld\n", count);
 	while (check_if_set(s1[i], set))
 	{
 		++count;
 		--i;
 	}
-	printf("count2 : %ld\n", count);
 	str = malloc(sizeof(char) * (ft_strlen(s1) - count + 1));
 	if (!str)
 		return (0);

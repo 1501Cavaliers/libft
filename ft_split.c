@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:00:17 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/12 15:39:06 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/16 18:51:50 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ int	word_len(const char *s, char c, int i)
 			++i;
 		while (s[i] != c)
 		{
-			++len;
 			++i;
+			++len;
 		}
-		if ((s[i] == c && s[i + 1] != c && i != 0) || s[i + 1] == 0)
+		// printf("word len 1: %d\n", len);
+		if ((s[i] == c || s[i + 1] == 0))
 			return (len);
 	}
+	// printf("word len 2: %d\n", len);
 	return (len);
 }
 
@@ -55,7 +57,7 @@ int	word_count(const char *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		if ((s[i] == c && s[i + 1] != c && i != 0) || s[i + 1] == 0)
+		if ((s[i] == c  && s[i + 1] != c  && i != 0) || s[i + 1] == 0)
 		{
 			++count;
 			++i;
@@ -77,18 +79,32 @@ char	**ft_split(char const *s, char c)
 	if (*s == 0)
 		return (0);
 	word = word_count(s, c);
-	splinter = malloc(sizeof(char *) * (word + 1));
+	// printf("word count : %d\n", word);
+	splinter = malloc(sizeof(char *) * word);
 	if (!splinter)
 		return (0);
 	r = 0;
-	while (r < word)
+	while (r < word - 1)
 	{
 		splinter[r] = malloc(sizeof(char) * (word_len(s, c, i) + 1));
 		if (!splinter[r])
-			return (0);
+			return (NULL);
 		i = fill_splinter(splinter[r], s, c, i);
 		++r;
 	}
-	splinter[r] = 0;
+	// printf("r : %d\n", r);
+	splinter[r] = '\0';
 	return (splinter);
 }
+
+// int	main(void)
+// {
+// 	char **tab = ft_split("  tripouille  42  ", ' ');
+// 	printf("tab[0] : %s\n", tab[0]);
+// 	printf("tab[1] : %s\n", tab[1]);
+// 	printf("tab[2] : %s\n", tab[2]);
+// 	free(tab[0]);
+// 	free(tab[1]);
+// 	free(tab[2]);
+// 	free(tab);
+// }
