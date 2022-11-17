@@ -6,105 +6,92 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:00:17 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 18:51:50 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:07:42 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	fill_splinter(char *str, const char *s, char c, int i)
-{
-	while (s[i] == c)
-		++i;
-	while (s[i] != c)
-	{
-		*str = s[i];
-		++i;
-		++str;
-	}
-	*str = 0;
-	return (i);
-}
-
-int	word_len(const char *s, char c, int i)
-{
-	int	len;
-
-	len = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			++i;
-		while (s[i] != c)
-		{
-			++i;
-			++len;
-		}
-		// printf("word len 1: %d\n", len);
-		if ((s[i] == c || s[i + 1] == 0))
-			return (len);
-	}
-	// printf("word len 2: %d\n", len);
-	return (len);
-}
-
-int	word_count(const char *s, char c)
+static int	ft_wordcount(const char *s, char c)
 {
 	int	count;
 	int	i;
+	int	word;
 
 	count = 0;
 	i = 0;
+	word = 0;
 	while (s[i])
 	{
-		if ((s[i] == c  && s[i + 1] != c  && i != 0) || s[i + 1] == 0)
+		if (s[i] == c)
+			word = 0;
+		if (word == 0 && s[i] != c)
 		{
 			++count;
-			++i;
+			word = 1;
 		}
-		else
-			++i;
+		i++;
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+static int	ft_wordlen(const char *s, char c, int i)
 {
-	int		word;
-	char	**splinter;
-	int		r;
-	int		i;
+	int	len;
 
-	i = 0;
-	if (*s == 0)
-		return (0);
-	word = word_count(s, c);
-	// printf("word count : %d\n", word);
-	splinter = malloc(sizeof(char *) * word);
-	if (!splinter)
-		return (0);
-	r = 0;
-	while (r < word - 1)
+	len = 0;
+	while (s[i] && s[i] != c)
 	{
-		splinter[r] = malloc(sizeof(char) * (word_len(s, c, i) + 1));
-		if (!splinter[r])
-			return (NULL);
-		i = fill_splinter(splinter[r], s, c, i);
-		++r;
+		++len;
+		i++;
 	}
-	// printf("r : %d\n", r);
-	splinter[r] = '\0';
-	return (splinter);
+	return (len);
 }
 
-// int	main(void)
-// {
-// 	char **tab = ft_split("  tripouille  42  ", ' ');
-// 	printf("tab[0] : %s\n", tab[0]);
-// 	printf("tab[1] : %s\n", tab[1]);
-// 	printf("tab[2] : %s\n", tab[2]);
-// 	free(tab[0]);
-// 	free(tab[1]);
-// 	free(tab[2]);
-// 	free(tab);
-// }
+static char	*ft_stricpy(char *dest, const char *src, char c, int i)
+{
+	int	y;
+
+	y = 0;
+	while (src[i] && src[i] != c)
+	{
+		dest[y] = src[i];
+		++y;
+		++i;
+	}
+	dest[y] = '\0';
+	return (dest);
+}
+
+char	**ft_fill_tab(char **tab, const char *s, char c)
+{
+	int	r;
+	int	i;
+	int	w_len;
+
+	r = 0;
+	i = 0;
+	while (r < ft_wordcount(s, c))
+	{
+		while (s[i] == c && s[i])
+			i++;
+		w_len = ft_wordlen(s, c, i);
+		tab[r] = malloc(sizeof(char) * (w_len + 1));
+		if (!tab[r])
+			return (NULL);
+		tab[r] = ft_stricpy(tab[r], s, c, i);
+		i += w_len;
+		r++;
+	}
+	tab[r] = NULL;
+	return (tab);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+
+	tab = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
+	tab = ft_fill_tab(tab, s, c);
+	return (tab);
+}

@@ -6,72 +6,95 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:39:48 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 18:03:28 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:08:01 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check_if_set(char a, const char *set)
+static int	ft_checksetav(char const *s1, char const *set)
 {
-	while (*set)
-	{
-		if (a == *set)
-			return (1);
-		++set;
-	}
-	return (0);
-}
-
-char	*fill_str(const char *s1, const char *set, char *str, size_t count)
-{
-	size_t	i;
-	size_t	y;
+	int	i;
+	int	j;
+	int	e;
 
 	i = 0;
-	while (check_if_set(s1[i], set))
-		++i;
-	y = 0;
-	while (y < ft_strlen(s1) - count)
+	while (s1[i])
 	{
-		str[y] = s1[i + y];
-		++y;
+		e = 0;
+		j = 0;
+		while (set[j])
+		{
+			if (set[j] == s1[i])
+				e = 1;
+			j++;
+		}
+		if (e == 0)
+			return (i);
+		i++;
 	}
-	str[y] = 0;
-	return (str);
+	return (i);
+}
+
+static int	ft_checksetar(char const *s1, char const *set, int k)
+{
+	int	i;
+	int	j;
+	int	e;
+
+	i = (ft_strlen(s1) - 1);
+	while (i > 0 && i >= k)
+	{
+		e = 0;
+		j = 0;
+		while (set[j])
+		{
+			if (set[j] == s1[i])
+				e = 1;
+			j++;
+		}
+		if (e == 0)
+			return (i);
+		i--;
+	}
+	return (i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	size_t	i;
-	size_t	count;
+	int		i;
+	int		j;
+	int		len;
+	int		u;
 
-	i = 0;
-	if (!s1[i])
-		return (0);
-	count = 0;
-	while (check_if_set(s1[i], set))
-	{
-		++count;
-		++i;
-	}
-	i = ft_strlen(s1) - 1;
-	while (check_if_set(s1[i], set))
-	{
-		++count;
-		--i;
-	}
-	str = malloc(sizeof(char) * (ft_strlen(s1) - count + 1));
+	j = 0;
+	if (!s1 || !set)
+		return (NULL);
+	i = ft_checksetav(s1, set);
+	u = ft_checksetar(s1, set, i);
+	len = u - i + 1;
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
-	str = fill_str(s1, set, str, count);
+	while (i <= u)
+	{
+		str[j] = s1[i];
+		i++;
+		j++;
+	}
+	str[j] = 0;
 	return (str);
 }
 
 // int	main(void)
 // {
-// 	char *s = ft_strtrim("   xxxtripouille   xxx", " x");
+// 	char *s = "   xxxtripouille";
+// 	char *str = ft_strtrim(s, " x");
+// 	printf("strlen : %ld\n", ft_strlen(s));
+// 	printf("s[15] :%c\n", s[15]);
 // 	printf("%s\n", s);
-// 	free(s);
+// 	printf("%s", str);
+// 	// printf("%d\n", ft_strncmp(s, "", 1));
+// 	free(str);
 // }

@@ -6,13 +6,13 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:10:26 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 13:21:23 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:07:09 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_rev_char_tab(char *arr, int size)
+static char	*ft_rev_char_tab(char *arr, int size)
 {
 	int		i;
 	char	temp;
@@ -28,7 +28,7 @@ char	*ft_rev_char_tab(char *arr, int size)
 	return (arr);
 }
 
-char	*ft_fill_arr(char *arr, int n, int len, int s)
+static char	*ft_fill_arr(char *arr, int n, int len, int s)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ char	*ft_fill_arr(char *arr, int n, int len, int s)
 	return (arr);
 }
 
-int	ft_len(int n)
+static int	ft_len(int n)
 {
 	int	i;
 

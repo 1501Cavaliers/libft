@@ -69,4 +69,4 @@ bonus : $(SOURCES_BONUS)
 	$(CC) -c $(SOURCES_BONUS)
 	ar -r $(NAME) $(OBJECTS_BONUS)
 
-all: NAME clean fclean re mem
+all: NAME clean fclean re

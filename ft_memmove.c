@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:19:13 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/15 18:25:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:05:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!dest || !src)
-		return NULL;
+		return (NULL);
 	if (src < dest)
 	{
 		while (n)

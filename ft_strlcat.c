@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:32:07 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 16:01:55 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:06:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 // {
 // 	char	dest[30];
 // 	char * src = (char *)"AAAAAAAAA";
-	
 // 	ft_memset(dest, 0, 30);
 // 	ft_memset(dest, '1', 10);
 // 	printf("len of src : %ld\n", ft_strlen(src));
