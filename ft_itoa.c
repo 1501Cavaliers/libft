@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:10:26 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/17 19:07:09 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/18 15:11:02 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*ft_fill_arr(char *arr, int n, int len, int s)
 	i = 0;
 	arr[i] = n % 10 + 48;
 	++i;
-	while (n > 10)
+	while (n >= 10)
 	{
 		n = n / 10;
 		arr[i] = n % 10 + 48;
@@ -73,6 +73,10 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
+	if (n == 10)
+		return (ft_strdup("10"));
+	if (n == -10)
+		return (ft_strdup("-10"));
 	if (n < 0)
 	{
 		s = 1;
@@ -87,3 +91,9 @@ char	*ft_itoa(int n)
 	ft_fill_arr(arr, n, len, s);
 	return (arr);
 }
+
+// int	main(void)
+// {
+// 	char *res = ft_itoa(-10);
+// 	printf("%s\n", res);
+// }

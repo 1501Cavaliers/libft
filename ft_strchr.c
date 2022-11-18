@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:47:37 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 13:26:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:30:12 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	if (c > 127)
-		return (s);
+		return ((char *)s);
 	arr = (char *)s;
 	while (arr[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:32:07 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/17 19:06:39 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/18 15:45:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		i++;
 	}
 	dest[i] = '\0';
-	while (src[k])
-		++k;
 	return (j);
 }
 

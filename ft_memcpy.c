@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:08:05 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/09 14:56:42 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/18 14:57:27 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	cdest = (char *)dest;
 	csrc = (char *)src;
+	if (!src)
+		return (dest);
 	while (n-- > 0)
 		*cdest++ = *csrc++;
 	return (dest);

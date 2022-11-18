@@ -1,7 +1,3 @@
-NAME = libft.a
-
-CC = gcc -Wall -Wextra -Wall
-
 MY_SOURCES = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -37,6 +33,8 @@ MY_SOURCES = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 
+MY_OBJETCS = $(MY_SOURCES:.c=.o)
+
 SOURCES_BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
@@ -47,26 +45,28 @@ SOURCES_BONUS = ft_lstnew.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 
-MY_OBJETCS = $(MY_SOURCES:.c=.o)
-
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
+CC = cc 
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = libft.a
+
 $(NAME): $(MY_OBJETCS)
-	$(CC) -c $(MY_OBJETCS)
-	ar -cr $(NAME) $(MY_OBJETCS)
+	ar -crs $(NAME) $(MY_OBJETCS)
+
+all: $(NAME)
 
 NAME: $(NAME)
 
 clean:	
-	rm -f *.o
+	rm -f $(MY_OBJETCS) $(OBJECTS_BONUS)
 
 fclean: clean
-	rm -f $(NAME) a.out
+	rm -f $(NAME)
 
-re: NAME clean
+re: fclean all
 
-bonus : $(SOURCES_BONUS)
+bonus : $(MY_OBJETCS) $(SOURCES_BONUS)
 	$(CC) -c $(SOURCES_BONUS)
-	ar -r $(NAME) $(OBJECTS_BONUS)
-
-all: NAME clean fclean re
+	ar -rcs $(NAME) $(MY_OBJETCS) $(OBJECTS_BONUS)
