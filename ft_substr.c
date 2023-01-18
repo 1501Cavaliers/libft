@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:05:14 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 13:11:30 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/21 14:30:15 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	if (!s || !s[i])
-		return (0);
+	if (!s)
+		return (NULL);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	if (ft_strlen(s) - start < len)

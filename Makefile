@@ -32,6 +32,10 @@ MY_SOURCES = ft_isalpha.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
+	ft_printf.c \
+	ft_printf_utils.c \
+	ft_get_next_line.c \
+	ft_get_next_line_utils.c
 
 MY_OBJETCS = $(MY_SOURCES:.c=.o)
 
@@ -43,7 +47,7 @@ SOURCES_BONUS = ft_lstnew.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
-	ft_lstmap.c \
+	ft_lstmap.c 
 
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
@@ -63,10 +67,9 @@ clean:
 	rm -f $(MY_OBJETCS) $(OBJECTS_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) a.out
 
 re: fclean all
 
-bonus : $(MY_OBJETCS) $(SOURCES_BONUS)
-	$(CC) -c $(SOURCES_BONUS)
-	ar -rcs $(NAME) $(MY_OBJETCS) $(OBJECTS_BONUS)
+bonus : $(OBJECTS_BONUS)
+	ar -r $(NAME) $(OBJECTS_BONUS)

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:23:30 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/15 16:09:30 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/20 18:30:05 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
 		ft_lstadd_back(&start, new);
 		lst = lst->next;
 	}

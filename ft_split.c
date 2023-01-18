@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:00:17 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/17 19:07:42 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/20 16:51:27 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 
 	tab = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
+	if (!tab)
+		return (NULL);
 	tab = ft_fill_tab(tab, s, c);
 	return (tab);
 }

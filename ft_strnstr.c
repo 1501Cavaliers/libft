@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:49 by fserpe            #+#    #+#             */
-/*   Updated: 2022/11/16 16:57:58 by fserpe           ###   ########.fr       */
+/*   Updated: 2022/11/20 15:30:45 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	char haystack[30] = "aaabcabcd";
-// 	// char needle[10] = "aabc";
-// 	// char * empty = (char*)"";
-
-// 	printf("%s\n", ft_strnstr(haystack, "aaabc", 5));
-// }
